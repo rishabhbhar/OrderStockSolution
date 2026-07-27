@@ -1,6 +1,6 @@
 namespace ProductService.Common
 {
-    // Standard success envelope returned by every endpoint.
+   
     public class ApiResponse<T>
     {
         public bool Success { get; set; } = true;
@@ -13,7 +13,7 @@ namespace ProductService.Common
         }
     }
 
-    // Standard error envelope returned by the global exception handler.
+    
     public class ErrorResponse
     {
         public bool Success { get; set; } = false;
