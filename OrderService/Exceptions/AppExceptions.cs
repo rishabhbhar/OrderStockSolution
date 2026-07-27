@@ -25,8 +25,7 @@ namespace OrderService.Exceptions
         public InsufficientStockException(string message) : base(message, 409) { }
     }
 
-    // Raised when the downstream Product Service cannot be reached at all
-    // (network failure, timeout, DNS, service down, etc.).
+    
     public class ProductServiceUnavailableException : AppException
     {
         public ProductServiceUnavailableException(string message) : base(message, 503) { }
