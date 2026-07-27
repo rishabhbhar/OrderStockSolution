@@ -1,7 +1,6 @@
 namespace ProductService.Exceptions
 {
-    // Base type for all handled application exceptions. StatusCode drives the HTTP response
-    // produced by the global exception handling middleware.
+    
     public abstract class AppException : Exception
     {
         public int StatusCode { get; }
