@@ -20,7 +20,7 @@ namespace OrderService.Controllers
             _logger = logger;
         }
 
-        /// <summary>Get all orders with pagination and optional status filter.</summary>
+       
         [HttpGet]
         [ProducesResponseType(typeof(ApiResponse<PagedResultDto<OrderDto>>), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAll(
@@ -32,7 +32,7 @@ namespace OrderService.Controllers
             return Ok(ApiResponse<PagedResultDto<OrderDto>>.Ok(result));
         }
 
-        /// <summary>Get a single order by id.</summary>
+        
         [HttpGet("{id:guid}")]
         [ProducesResponseType(typeof(ApiResponse<OrderDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status404NotFound)]
@@ -42,10 +42,7 @@ namespace OrderService.Controllers
             return Ok(ApiResponse<OrderDto>.Ok(result));
         }
 
-        /// <summary>
-        /// Create a new order. Validates stock via Product Service and atomically reduces
-        /// stock before the order is persisted. Fails with 409 if stock is insufficient.
-        /// </summary>
+      
         [HttpPost]
         [ProducesResponseType(typeof(ApiResponse<OrderDto>), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ErrorResponse), StatusCodes.Status400BadRequest)]
