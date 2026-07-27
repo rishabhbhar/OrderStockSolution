@@ -56,7 +56,7 @@ namespace ProductService.Repositories
 
         public async Task DeleteAsync(Product product)
         {
-            // Soft delete keeps history and avoids breaking existing order references.
+            
             product.IsActive = false;
             product.UpdatedAt = DateTime.UtcNow;
             _context.Products.Update(product);
@@ -65,9 +65,7 @@ namespace ProductService.Repositories
 
         public async Task<int> TryReduceStockAsync(Guid productId, int quantity)
         {
-            // A single conditional UPDATE guarantees atomicity at the database level:
-            // the row is only decremented if there is currently enough stock, avoiding
-            // race conditions between the stock-check and the stock-reduction steps.
+            
             var rowsAffected = await _context.Database.ExecuteSqlInterpolatedAsync($@"
                 UPDATE Products
                 SET StockQty = StockQty - {quantity}, UpdatedAt = SYSUTCDATETIME()
