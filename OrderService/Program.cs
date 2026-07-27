@@ -12,9 +12,7 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ---------------------------------------------------------------------------
-// Serilog - writes structured logs to rolling daily files under Logs/, plus console.
-// ---------------------------------------------------------------------------
+
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .Enrich.FromLogContext()
@@ -28,9 +26,7 @@ Log.Logger = new LoggerConfiguration()
 
 builder.Host.UseSerilog();
 
-// ---------------------------------------------------------------------------
-// Services
-// ---------------------------------------------------------------------------
+
 builder.Services.AddControllers()
     .ConfigureApiBehaviorOptions(options =>
     {
@@ -72,8 +68,7 @@ builder.Services.AddDbContext<OrderDbContext>(options =>
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderService, OrderServiceImpl>();
 
-// Typed HttpClient for calling Product Service, with a retry + circuit-breaker policy
-// to gracefully handle transient network issues between the two services.
+
 var productServiceTimeoutSeconds = builder.Configuration.GetValue<int>("ProductService:TimeoutSeconds", 10);
 
 builder.Services.AddHttpClient<IProductServiceClient, ProductServiceClient>(client =>
@@ -90,9 +85,7 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
-// ---------------------------------------------------------------------------
-// Pipeline
-// ---------------------------------------------------------------------------
+
 app.UseGlobalExceptionHandling();
 
 app.UseSwagger();
