@@ -9,9 +9,7 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ---------------------------------------------------------------------------
-// Serilog - writes structured logs to rolling daily files under Logs/, plus console.
-// ---------------------------------------------------------------------------
+
 Log.Logger = new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
     .Enrich.FromLogContext()
@@ -25,9 +23,7 @@ Log.Logger = new LoggerConfiguration()
 
 builder.Host.UseSerilog();
 
-// ---------------------------------------------------------------------------
-// Services
-// ---------------------------------------------------------------------------
+
 builder.Services.AddControllers()
     .ConfigureApiBehaviorOptions(options =>
     {
@@ -74,9 +70,7 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
-// ---------------------------------------------------------------------------
-// Pipeline
-// ---------------------------------------------------------------------------
+
 app.UseGlobalExceptionHandling();
 
 app.UseSwagger();
