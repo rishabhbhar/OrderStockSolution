@@ -10,8 +10,7 @@ namespace ProductService.Repositories
         Task UpdateAsync(Product product);
         Task DeleteAsync(Product product);
 
-        // Atomically decrements stock only if enough stock is available.
-        // Returns the number of rows affected (0 = insufficient stock or product not found).
+        
         Task<int> TryReduceStockAsync(Guid productId, int quantity);
 
         Task<int> GetCurrentStockAsync(Guid productId);
