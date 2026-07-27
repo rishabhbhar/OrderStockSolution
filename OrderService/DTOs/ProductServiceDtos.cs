@@ -1,8 +1,6 @@
 namespace OrderService.DTOs
 {
-    // Mirrors the response contracts exposed by Product Service's inter-service endpoints.
-    // Order Service only ever talks to Product Service through HTTP - never directly to
-    // its database - and these DTOs are the shape of that contract.
+   
     public class ApiResponseEnvelope<T>
     {
         public bool Success { get; set; }
