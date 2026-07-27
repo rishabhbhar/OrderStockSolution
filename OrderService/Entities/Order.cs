@@ -15,8 +15,7 @@ namespace OrderService.Entities
         public OrderStatus OrderStatus { get; set; } = OrderStatus.CREATED;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        // Denormalized snapshot fields captured at order time - useful for display/history
-        // without ever needing to query the Product database directly.
+        
         public string ProductName { get; set; } = string.Empty;
         public decimal UnitPrice { get; set; }
     }
