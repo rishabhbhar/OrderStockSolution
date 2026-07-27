@@ -5,9 +5,7 @@ using ProductService.Exceptions;
 
 namespace ProductService.Middleware
 {
-    // Global exception handling middleware. Every unhandled exception in the pipeline is
-    // caught here, logged, and translated into a consistent JSON error response so clients
-    // never see raw stack traces.
+    
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
