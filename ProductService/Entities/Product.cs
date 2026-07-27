@@ -10,7 +10,7 @@ namespace ProductService.Entities
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
 
-        // Used by EF Core for optimistic concurrency (row version)
+        
         public byte[]? RowVersion { get; set; }
     }
 }
