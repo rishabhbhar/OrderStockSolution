@@ -1,6 +1,6 @@
 namespace ProductService.DTOs
 {
-    // Used by Order Service to check whether stock is available before placing an order.
+    
     public class StockCheckResponseDto
     {
         public Guid ProductId { get; set; }
@@ -10,7 +10,7 @@ namespace ProductService.DTOs
         public bool IsAvailable { get; set; }
     }
 
-    // Used by Order Service to atomically reduce stock after a successful order.
+    
     public class ReduceStockRequestDto
     {
         public int Quantity { get; set; }
